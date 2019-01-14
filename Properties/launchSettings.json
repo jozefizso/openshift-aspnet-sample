@@ -1,7 +1,7 @@
-﻿{
+{
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:20941",
       "sslPort": 0
@@ -12,16 +12,21 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "OPENSHIFT_BUILD_SOURCE": "https://github.com/redhat-developer/s2i-dotnetcore-ex.git",
+        "OPENSHIFT_BUILD_NAME": "s2i-dotnetcore-1",
+        "OPENSHIFT_BUILD_REFERENCE": "dotnetcore-2.0",
+        "OPENSHIFT_BUILD_NAMESPACE": "dotnet",
+        "OPENSHIFT_BUILD_COMMIT": "0543be02d0be779d08e6c43f82ef9f0610f5d4e3",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "openshift_aspnet_sample": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }
