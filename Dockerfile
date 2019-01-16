@@ -16,9 +16,16 @@ LABEL io.k8s.description="Sample application for running on OpenShift platform."
       io.openshift.expose-services="8080:http"
 
 EXPOSE 8080
-ENV ASPNETCORE_URLS=http://*:8080
+ENV HOME=/app \
+    ASPNETCORE_URLS=http://*:8080
+
+COPY ./usr/bin /usr/bin
 
 WORKDIR /app
 COPY --from=build-env /app/out ./
 
+RUN adduser -u 1001 -S -h ${HOME} -s /sbin/nologin default
+RUN chown -R 1001:0 /app && fix-permissions /app
+
 ENTRYPOINT ["dotnet", "openshift-aspnet-sample.dll"]
+USER 1001
